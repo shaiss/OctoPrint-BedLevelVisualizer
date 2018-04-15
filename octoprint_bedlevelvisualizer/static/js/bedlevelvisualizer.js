@@ -45,33 +45,6 @@ $(function () {
 					self.settingsViewModel.saveData();
 				};
 			}
-			OctoPrint.control.sendGcode('M155 S3');
-			var data = [{
-					z: mesh_data,
-					type: 'surface'
-				}
-			];
-
-			var layout = {
-				//title: 'Bed Leveling Mesh',
-				autosize: true,
-				margin: {
-					l: 0,
-					r: 0,
-					b: 0,
-					t: 0
-				},
-				scene: {
-					camera: {
-						eye: {
-							x: -1.25,
-							y: -1.25,
-							z: 1.25
-						}
-					}
-				}
-			};
-			Plotly.react('bedlevelvisualizergraph', data, layout);
 		};
 
 		self.onAfterTabChange = function (current, previous) {
