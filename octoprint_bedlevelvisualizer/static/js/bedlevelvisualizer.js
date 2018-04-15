@@ -7,11 +7,9 @@ $(function () {
 		self.loginStateViewModel = parameters[2];
 
 		ko.bindingHandlers.plotlySurface = {
-			init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {        
-				var mesh_data = ko.utils.unwrapObservable(valueAccessor());		
-				console.log(valueAccessor());	
-				console.log(allBindingsAccessor());
+			init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 				var test = ko.unwrap(valueAccessor()) || [];
+				console.log(test);
 				var data = [{
 						z: test,
 						type: 'surface'
@@ -40,8 +38,6 @@ $(function () {
 				Plotly.react(element, data, layout);
 			},
 			update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-				var mesh_data = ko.utils.unwrapObservable(valueAccessor());
-				console.log(valueAccessor());
 				var test = ko.unwrap(valueAccessor()) || [];
 				console.log(test);
 				
