@@ -32,7 +32,7 @@ ko.bindingHandlers.plotlySurface = {
 	update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		console.log(valueAccessor());
 		console.log(ko.unwrap(valueAccessor()));
-		console.log(allBindingsAccessor);
+		console.log(allBindingsAccessor());
 		console.log(viewModel);
 		console.log(bindingContext);
 /* 		var test = ko.unwrap(valueAccessor()) || [];
