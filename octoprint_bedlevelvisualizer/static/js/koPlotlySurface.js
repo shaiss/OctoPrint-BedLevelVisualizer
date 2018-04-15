@@ -30,7 +30,12 @@ ko.bindingHandlers.plotlySurface = {
 		Plotly.react(element, data, layout);
 	}, */
 	update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var test = ko.unwrap(valueAccessor()) || [];
+		console.log(valueAccessor());
+		console.log(ko.unwrap(valueAccessor()));
+		console.log(allBindingsAccessor);
+		console.log(viewModel);
+		console.log(bindingContext);
+/* 		var test = ko.unwrap(valueAccessor()) || [];
 		console.log(test);
 		
 		var data = [{
@@ -59,6 +64,6 @@ ko.bindingHandlers.plotlySurface = {
 			}
 		};		
 
-		Plotly.react(element, data, layout);
+		Plotly.react(element, data, layout); */
 	}
 };
