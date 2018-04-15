@@ -11,8 +11,9 @@ $(function () {
 				var mesh_data = ko.utils.unwrapObservable(valueAccessor());		
 				console.log(valueAccessor());	
 				console.log(allBindingsAccessor());
+				var test = ko.unwrap(valueAccessor()) || [];
 				var data = [{
-						z: mesh_data,
+						z: test,
 						type: 'surface'
 					}
 				];
@@ -41,7 +42,7 @@ $(function () {
 			update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 				var mesh_data = ko.utils.unwrapObservable(valueAccessor());
 				console.log(valueAccessor());
-				var test = allBindingsAccessor.get('mesh_data') || [];
+				var test = ko.unwrap(valueAccessor()) || [];
 				console.log(test);
 				
 				var data = [{
