@@ -40,11 +40,12 @@ $(function () {
 			},
 			update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 				var mesh_data = ko.utils.unwrapObservable(valueAccessor());
-				console.log(valueAccessor());	
-				console.log(allBindingsAccessor());
+				console.log(valueAccessor());
+				var test = allBindingsAccessor.get('mesh_data') || [];
+				console.log(test);
 				
 				var data = [{
-						z: mesh_data,
+						z: test,
 						type: 'surface'
 					}
 				];
