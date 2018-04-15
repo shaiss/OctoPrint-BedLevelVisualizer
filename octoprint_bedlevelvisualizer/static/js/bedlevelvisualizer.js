@@ -39,7 +39,7 @@ $(function () {
 				Plotly.react(element, data, layout);
 			},
 			update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-				console.log(ko.utils.unwrapObservable(valueAccessor()));
+				var mesh_data = ko.utils.unwrapObservable(valueAccessor());
 				console.log(valueAccessor());	
 				console.log(allBindingsAccessor());
 				
