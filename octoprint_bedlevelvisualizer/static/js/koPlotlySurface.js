@@ -1,7 +1,8 @@
 ko.bindingHandlers.plotlySurface = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {        
 		var mesh_data = ko.utils.unwrapObservable(valueAccessor());		
-		console.log(mesh_data);	
+		console.log(valueAccessor());	
+		console.log(allBindingsAccessor());
 		var data = [{
 				z: mesh_data,
 				type: 'surface'
@@ -31,7 +32,8 @@ ko.bindingHandlers.plotlySurface = {
     },
     update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var mesh_data = ko.utils.unwrapObservable(valueAccessor());	
-		console.log(mesh_data);
+		console.log(valueAccessor());	
+		console.log(allBindingsAccessor());
 		var data = [{
 				z: mesh_data,
 				type: 'surface'
