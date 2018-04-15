@@ -1,10 +1,9 @@
 ko.bindingHandlers.plotlySurface = {
-    init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {        
-		var mesh_data = ko.utils.unwrapObservable(valueAccessor());		
-		console.log(valueAccessor());	
-		console.log(allBindingsAccessor());
+	init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var test = ko.unwrap(valueAccessor()) || [];
+		console.log(test);
 		var data = [{
-				z: mesh_data,
+				z: test,
 				type: 'surface'
 			}
 		];
@@ -28,14 +27,14 @@ ko.bindingHandlers.plotlySurface = {
 				}
 			}
 		};	
-        Plotly.react(element, data, layout);
-    },
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var mesh_data = ko.utils.unwrapObservable(valueAccessor());	
-		console.log(valueAccessor());	
-		console.log(allBindingsAccessor());
+		Plotly.react(element, data, layout);
+	},
+	update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+		var test = ko.unwrap(valueAccessor()) || [];
+		console.log(test);
+		
 		var data = [{
-				z: mesh_data,
+				z: test,
 				type: 'surface'
 			}
 		];
@@ -60,6 +59,6 @@ ko.bindingHandlers.plotlySurface = {
 			}
 		};		
 
-        Plotly.react(element, data, layout);
-    }
+		Plotly.react(element, data, layout);
+	}
 };
