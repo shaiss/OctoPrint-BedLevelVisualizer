@@ -35,6 +35,8 @@ ko.bindingHandlers.plotlySurface = {
 		console.log(allBindingsAccessor());
 		console.log(viewModel);
 		console.log(bindingContext);
+		var test = allBindingsAccessor().mesh_data();
+		console.log(test);
 /* 		var test = ko.unwrap(valueAccessor()) || [];
 		console.log(test);
 		
