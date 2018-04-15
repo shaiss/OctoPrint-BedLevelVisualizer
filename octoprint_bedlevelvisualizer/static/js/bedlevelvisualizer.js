@@ -6,6 +6,73 @@ $(function () {
 		self.controlViewModel = parameters[1];
 		self.loginStateViewModel = parameters[2];
 
+		ko.bindingHandlers.plotlySurface = {
+			init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {        
+				var mesh_data = ko.utils.unwrapObservable(valueAccessor());		
+				console.log(valueAccessor());	
+				console.log(allBindingsAccessor());
+				var data = [{
+						z: mesh_data,
+						type: 'surface'
+					}
+				];
+
+				var layout = {
+					//title: 'Bed Leveling Mesh',
+					autosize: true,
+					margin: {
+						l: 0,
+						r: 0,
+						b: 0,
+						t: 0
+					},
+					scene: {
+						camera: {
+							eye: {
+								x: -1.25,
+								y: -1.25,
+								z: 1.25
+							}
+						}
+					}
+				};	
+				Plotly.react(element, data, layout);
+			},
+			update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+				console.log(ko.utils.unwrapObservable(valueAccessor()));
+				console.log(valueAccessor());	
+				console.log(allBindingsAccessor());
+				
+				var data = [{
+						z: mesh_data,
+						type: 'surface'
+					}
+				];
+
+				var layout = {
+					//title: 'Bed Leveling Mesh',
+					autosize: true,
+					margin: {
+						l: 0,
+						r: 0,
+						b: 0,
+						t: 0
+					},
+					scene: {
+						camera: {
+							eye: {
+								x: -1.25,
+								y: -1.25,
+								z: 1.25
+							}
+						}
+					}
+				};		
+
+				Plotly.react(element, data, layout);
+			}
+		};
+		
 		self.processing = ko.observable(false);
 		self.mesh_data = ko.observableArray([]);
 		self.save_mesh = ko.observable();

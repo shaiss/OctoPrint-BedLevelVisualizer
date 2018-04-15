@@ -24,7 +24,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 	##~~ AssetPlugin
 	def get_assets(self):
 		return dict(
-			js=["js/bedlevelvisualizer.js","js/plotly-latest.min.js","js/koPlotlySurface.js"]
+			js=["js/bedlevelvisualizer.js","js/plotly-latest.min.js"]
 		)
 
 	##~~ GCODE hook
