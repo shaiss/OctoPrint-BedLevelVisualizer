@@ -1,5 +1,5 @@
 ko.bindingHandlers.plotlySurface = {
-	init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+/* 	init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var test = ko.unwrap(valueAccessor()) || [];
 		console.log(test);
 		var data = [{
@@ -28,7 +28,7 @@ ko.bindingHandlers.plotlySurface = {
 			}
 		};	
 		Plotly.react(element, data, layout);
-	},
+	}, */
 	update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var test = ko.unwrap(valueAccessor()) || [];
 		console.log(test);
