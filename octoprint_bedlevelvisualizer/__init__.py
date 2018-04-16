@@ -15,7 +15,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 	
 	##~~ SettingsPlugin
 	def get_settings_defaults(self):
-		return dict(command="G29 T1",stored_mesh=[],save_mesh=True,report_flag="Bilinear Leveling Grid:")
+		return dict(command="G28\nG29 T1",stored_mesh=[],save_mesh=True,report_flag="Bilinear Leveling Grid:",report_types=["Bilinear Leveling Grid:","Subdivided with CATMULL ROM Leveling Grid:","Measured points:"])
 
 	##~~ StartupPlugin
 	def on_after_startup(self):
@@ -29,12 +29,12 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 
 	##~~ GCODE hook
 	def processGCODE(self, comm, line, *args, **kwargs):
-		if self._settings.get(["report_flag"]) in line:
+		if line in self._settings.get(["report_types"]):
 			self.processing = True
 			self.mesh = []
 			return line
 			
-		if self.processing and "ok" not in line: # and re.match(r"^\s?\d ([\+?-?]\d+.\d+[,|\s])+$", line):
+		if self.processing and "ok" not in line and re.match(r"^\s?\d?\s?(\+?-?\d+.\d+[,?\s?])+$", line.strip()):
 			new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
 			new_line = re.sub(r"[\[\]]"," ",new_line)
 			new_line = re.sub(r"\s+","\t",new_line)	
@@ -46,9 +46,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 		
 		if self.processing and "ok" in line:
 			self.processing = False
-			#self.mesh.reverse()
-			self.mesh.pop(0)
-			self.mesh.pop()
+			self.mesh.reverse()
 			self._plugin_manager.send_plugin_message(self._identifier, dict(mesh=self.mesh))
 		
 		return line
