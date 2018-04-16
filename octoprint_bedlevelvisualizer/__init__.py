@@ -29,7 +29,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 
 	##~~ GCODE hook
 	def processGCODE(self, comm, line, *args, **kwargs):
-		if self._settings.get(["report_types"])[line.strip()]:
+		if line.strip() in self._settings.get(["report_types"]):
 			self.processing = True
 			self.mesh = []
 			return line
