@@ -22,6 +22,12 @@ $(function () {
 			self.save_mesh(self.settingsViewModel.settings.plugins.bedlevelvisualizer.save_mesh());
 		}
 		
+		self.onAfterBinding = function() {
+			try {
+				console.log(OctoPrint.printer.profile.volume.width);
+			}
+		}
+		
 		self.onEventSettingsUpdated = function (payload) {
 			self.mesh_data(self.settingsViewModel.settings.plugins.bedlevelvisualizer.stored_mesh());
 			self.save_mesh(self.settingsViewModel.settings.plugins.bedlevelvisualizer.save_mesh());
