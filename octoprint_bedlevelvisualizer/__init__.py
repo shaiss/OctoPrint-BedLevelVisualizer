@@ -36,7 +36,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			
 		if self.processing and "ok" not in line and re.match(r"^\d (([\+?-?]\d+.\d+)+[,|\s])+$", line.strip()):
 			self._logger.info(line)
-			self.mesh.append(line.strip().replace(","," ").split())
+			self.mesh.append(line.strip().split())
 			return line
 		
 		if self.processing and "ok" in line:
