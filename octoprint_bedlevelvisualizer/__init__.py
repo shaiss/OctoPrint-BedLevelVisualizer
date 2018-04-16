@@ -47,6 +47,8 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 		if self.processing and "ok" in line:
 			self.processing = False
 			#self.mesh.reverse()
+			self.mesh.pop(0)
+			self.mesh.pop()
 			self._plugin_manager.send_plugin_message(self._identifier, dict(mesh=self.mesh))
 		
 		return line
