@@ -34,7 +34,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			self.mesh = []
 			return line
 			
-		if self.processing and "ok" not in line and re.match(r"^(-?(\d+.\d+)[,|\s])+", line.strip()):
+		if self.processing and "ok" not in line: # and re.match(r"^(-?(\d+.\d+)[,|\s])+", line.strip()):
 			if self._settings.get(["report_flag"]) == "Bed Topography Report for CSV:":
 				self.mesh.append(line.strip().split(","))
 			if self._settings.get(["report_flag"]) in ["Subdivided with CATMULL ROM Leveling Grid:","Measured points:","Bilinear Leveling Grid:"]:
