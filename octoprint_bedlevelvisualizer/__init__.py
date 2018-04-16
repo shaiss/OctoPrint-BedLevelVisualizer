@@ -15,7 +15,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 	
 	##~~ SettingsPlugin
 	def get_settings_defaults(self):
-		return dict(command="G29 T1",stored_mesh=[],save_mesh=True)
+		return dict(command="G29 T1",stored_mesh=[],save_mesh=True,report_flag="Bed Topography Report for CSV:")
 
 	##~~ StartupPlugin
 	def on_after_startup(self):
@@ -29,7 +29,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 
 	##~~ GCODE hook
 	def processGCODE(self, comm, line, *args, **kwargs):
-		if "Bed Topography Report for CSV:" in line:
+		if self._settings.get(["report_flag"]) in line:
 			self.processing = True
 			self.mesh = []
 			return line
