@@ -40,7 +40,8 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			new_line = re.sub(r"\s+","\t",new_line)	
 			new_line = new_line.split("\t")
 			new_line.pop(0)
-			self.mesh.append(new_line)
+			if len(new_line) > 0:
+				self.mesh.append(new_line)
 			return line
 		
 		if self.processing and "ok" in line:
