@@ -34,14 +34,17 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			self.mesh = []
 			return line
 			
-		if self.processing and "ok" not in line and re.match(r"^\s?\d?\s?(\+?-?\d+.\d+[,?\s?])+$", line.strip()):
-			new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
-			new_line = re.sub(r"[\[\]]"," ",new_line)
-			new_line = re.sub(r"\s+","\t",new_line)	
-			new_line = new_line.split("\t")
-			new_line.pop(0)
-			if len(new_line) > 0:
-				self.mesh.append(new_line)
+		if self.processing and "ok" not in line:
+			if re.match(r"^\s?\d?\s?(\+?-?\d+.\d+[,?\s?])+$", line.strip()):
+				new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
+				new_line = re.sub(r"[\[\]]"," ",new_line)
+				new_line = re.sub(r"\s+","\t",new_line)	
+				new_line = new_line.split("\t")
+				new_line.pop(0)
+				if len(new_line) > 0:
+					self.mesh.append(new_line)
+			else:
+				self._logger.info(line.strip())
 			return line
 		
 		if self.processing and "ok" in line:
