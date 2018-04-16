@@ -26,6 +26,9 @@ $(function () {
 			try {
 				console.log(OctoPrint.printer.profile.volume.width);
 			}
+			catch(err){
+				console.log(error);
+			}
 		}
 		
 		self.onEventSettingsUpdated = function (payload) {
