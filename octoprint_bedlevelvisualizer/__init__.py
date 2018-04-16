@@ -35,7 +35,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			return line
 			
 		if self.processing and "ok" not in line: # and re.match(r"^\s?\d ([\+?-?]\d+.\d+[,|\s])+$", line):
-			line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line)
+			line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
 			line = re.sub(r"[\[\]]"," ",line)
 			line = re.sub(r"\s+","\t",line)
 			self.mesh.append(line.split('\t'))
