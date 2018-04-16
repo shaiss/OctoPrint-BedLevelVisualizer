@@ -32,7 +32,7 @@ $(function () {
 				return;
 			}
 			if (mesh_data.mesh) {
-				console.log(data.mesh);
+				console.log(mesh_data.mesh);
 				self.drawMesh(mesh_data.mesh,true);
 			}
 			return;
