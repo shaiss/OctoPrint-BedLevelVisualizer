@@ -25,7 +25,7 @@ $(function () {
 		
 		self.onAfterBinding = function() {
 			try {
-				console.log(self.printerProfilesViewModel.currentProfileData().volume());
+				console.log(self.printerProfilesViewModel.currentProfileData().volume);
 			}
 			catch(err){
 				console.log(err);
