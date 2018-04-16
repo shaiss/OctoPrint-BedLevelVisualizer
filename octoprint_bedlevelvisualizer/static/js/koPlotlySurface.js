@@ -1,9 +1,7 @@
 ko.bindingHandlers.plotlySurface = {
-/* 	init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-		var test = ko.unwrap(valueAccessor()) || [];
-		console.log(test);
+	init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 		var data = [{
-				z: test,
+				z: ko.unwrap(valueAccessor()) || [],
 				type: 'surface'
 			}
 		];
@@ -28,7 +26,7 @@ ko.bindingHandlers.plotlySurface = {
 			}
 		};	
 		Plotly.react(element, data, layout);
-	}, */
+	},
 	update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {		
 		var data = [{
 				z: ko.unwrap(valueAccessor()) || [],
@@ -37,7 +35,7 @@ ko.bindingHandlers.plotlySurface = {
 		];
 
 		var layout = {
-			//title: 'Bed Leveling Mesh',
+			title: 'Bed Leveling Mesh',
 			autosize: true,
 			margin: {
 				l: 0,
