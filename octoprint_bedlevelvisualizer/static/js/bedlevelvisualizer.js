@@ -27,7 +27,7 @@ $(function () {
 				console.log(OctoPrint.printer.profile.volume.width);
 			}
 			catch(err){
-				console.log(error);
+				console.log(err);
 			}
 		}
 		
