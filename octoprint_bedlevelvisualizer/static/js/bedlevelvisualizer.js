@@ -5,6 +5,7 @@ $(function () {
 		self.settingsViewModel = parameters[0];
 		self.controlViewModel = parameters[1];
 		self.loginStateViewModel = parameters[2];
+		self.printerProfilesViewModel = parameters[3];
 		
 		self.processing = ko.observable(false);
 		self.mesh_data = ko.observableArray([]);
@@ -24,7 +25,7 @@ $(function () {
 		
 		self.onAfterBinding = function() {
 			try {
-				console.log(OctoPrint.printer.profile.volume.width);
+				console.log(self.printerProfilesViewModel);
 			}
 			catch(err){
 				console.log(err);
@@ -83,7 +84,7 @@ $(function () {
 
 	OCTOPRINT_VIEWMODELS.push({
 		construct: bedlevelvisualizerViewModel,
-		dependencies: ["settingsViewModel", "controlViewModel", "loginStateViewModel"],
+		dependencies: ["settingsViewModel", "controlViewModel", "loginStateViewModel", "printerProfilesViewModel"],
 		elements: ["#settings_plugin_bedlevelvisualizer", "#tab_plugin_bedlevelvisualizer"]
 	});
 });
