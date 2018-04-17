@@ -34,17 +34,15 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			self.mesh = []
 			return line
 			
-		if self.processing and "ok" not in line:
-			if re.match(r"\s?\d?\s?(\+?-?\d+.\d+[,?\s?])+", line.strip()):
-				new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
-				new_line = re.sub(r"[\[\]]"," ",new_line)
-				new_line = re.sub(r"\s+","\t",new_line)	
-				new_line = new_line.split("\t")
+		if self.processing and "ok" not in line and re.match(r"\s?\d?\s?(\+?-?\d+.\d+[,?\s?])+", line.strip()):
+			new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
+			new_line = re.sub(r"[\[\]]"," ",new_line)
+			new_line = re.sub(r"\s+","\t",new_line)	
+			new_line = new_line.split("\t")
+			if self._settings.get(["report_flag"]) in ["Bilinear Leveling Grid:","Subdivided with CATMULL ROM Leveling Grid:","Measured points:"]:
 				new_line.pop(0)
-				if len(new_line) > 0:
-					self.mesh.append(new_line)
-			else:
-				self._logger.info(line.strip())
+			if len(new_line) > 0:
+				self.mesh.append(new_line)
 			return line
 		
 		if self.processing and "ok" in line:
