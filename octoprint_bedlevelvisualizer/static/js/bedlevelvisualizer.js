@@ -46,7 +46,6 @@ $(function () {
 					self.settingsViewModel.saveData();
 				};
 			}
-			OctoPrint.control.sendGcode('M155 S3');
 			var data = [{
 					z: mesh_data,
 					type: 'surface'
@@ -95,7 +94,6 @@ $(function () {
 
 		self.updateMesh = function () {
 			self.processing(true);
-			OctoPrint.control.sendGcode('M155 S30');
 			OctoPrint.control.sendGcode(self.settingsViewModel.settings.plugins.bedlevelvisualizer.command().split("\n"));
 		};
 	}
