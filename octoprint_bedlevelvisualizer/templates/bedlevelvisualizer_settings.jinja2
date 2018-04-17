@@ -13,6 +13,6 @@
 </div>
 <div class="control-group">
 	<label for="bedlevelvisualizer_command">Stored Mesh Data:</label>
-	<pre id="bedlevelvisualizer_data" data-bind="text: settingsViewModel.settings.plugins.bedlevelvisualizer.stored_mesh().join('\n').replace(',','\t')"></pre>
+	<pre id="bedlevelvisualizer_data" data-bind="text: settingsViewModel.settings.plugins.bedlevelvisualizer.stored_mesh().join('\n').replace(/,/g,'\t')"></pre>
 </div>
 <form>
