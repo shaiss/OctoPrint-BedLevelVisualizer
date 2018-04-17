@@ -95,7 +95,7 @@ $(function () {
 
 		self.updateMesh = function () {
 			self.processing(true);
-			OctoPrint.control.sendGcode('M155 S0');
+			OctoPrint.control.sendGcode('M155 S30');
 			OctoPrint.control.sendGcode(self.settingsViewModel.settings.plugins.bedlevelvisualizer.command().split("\n"));
 		};
 	}
