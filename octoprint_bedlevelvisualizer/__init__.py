@@ -36,7 +36,7 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 			
 		if self.processing and "ok" not in line and re.match(r"\s?\d?\s?(\+?-?\[?\s?\d+.\d+[\]?,?\s?]+)+", line.strip()):
 			new_line = re.sub(r"< \d+:\d+:\d+(\s+(AM|PM))?:","",line.strip())
-			new_line = re.sub(r"[\[\]]","",new_line)
+			new_line = re.sub(r"[(\[\s?)\]]","",new_line)
 			new_line = re.sub(r"\s+","\t",new_line)	
 			new_line = new_line.split("\t")
 			if self._settings.get(["report_flag"]) in ["Bilinear Leveling Grid:","Subdivided with CATMULL ROM Leveling Grid:","Measured points:"]:
@@ -47,8 +47,8 @@ class bedlevelvisualizer(octoprint.plugin.StartupPlugin,
 		
 		if self.processing and "ok" in line:
 			self.processing = False
-			if self._settings.get(["report_flag"]) not in ["Bilinear Leveling Grid:","Subdivided with CATMULL ROM Leveling Grid:","Measured points:"]:
-				self.mesh.reverse()
+			# if self._settings.get(["report_flag"]) not in ["Bilinear Leveling Grid:","Subdivided with CATMULL ROM Leveling Grid:","Measured points:"]:
+				# self.mesh.reverse()
 			self._plugin_manager.send_plugin_message(self._identifier, dict(mesh=self.mesh))
 		
 		return line
