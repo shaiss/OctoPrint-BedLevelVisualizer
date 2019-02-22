@@ -70,6 +70,11 @@ or manually using this URL:
 
 ## Changelog
 
+**[0.1.7]** (02/22/2019)
+
+**Added**
+  - Python 3 compatibility flag for future release of OctoPrint. 
+
 **[0.1.7]** (11/24/2018)
 
 **Added**
@@ -191,6 +196,7 @@ or manually using this URL:
 
 **Initial Release**
 
+[0.1.8]: https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/tree/0.1.8
 [0.1.7]: https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/tree/0.1.7
 [0.1.6]: https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/tree/0.1.6
 [0.1.5]: https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/tree/0.1.5
